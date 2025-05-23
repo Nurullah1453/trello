@@ -25,7 +25,10 @@ public class BoardPage {
     // Yeni board oluşturma
     public Response createBoard(String boardName) {
         return given()
+                .relaxedHTTPSValidation()
                 .queryParam("name", boardName)
+                .queryParam("defaultLabels", true)       // İsteğe bağlı
+                .queryParam("defaultLists", true)        // İsteğe bağlı
                 .queryParam("key", key)
                 .queryParam("token", token)
                 .when()
@@ -35,6 +38,7 @@ public class BoardPage {
                 .extract()
                 .response();
     }
+
 
     // Board silme
     public Response deleteBoard(String boardId) {
