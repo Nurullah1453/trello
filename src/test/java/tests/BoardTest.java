@@ -17,8 +17,8 @@ public class BoardTest {
 
     @BeforeAll
     public static void setup() {
-        String key = ""; // Sayfa hata veriyor ekleyecegim.
-        String token = ""; // Sayfa hata veriyor ekleyecegim.
+        String key = "390eb2a59167d52b1549efd7cc652927"; // Sayfa hata veriyor ekleyecegim.
+        String token = "d375e1412ed294aef0370d1d1eff9275f93069f33a4e7d7ffc9e23b5718e637b"; // Sayfa hata veriyor ekleyecegim.
         boardPage = new BoardPage(key, token);
         cardPage = new CardPage(key, token);
     }

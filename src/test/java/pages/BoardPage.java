@@ -2,6 +2,8 @@ package pages;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import utils.SSLUtil;
+
 
 import static io.restassured.RestAssured.given;
 
@@ -15,6 +17,9 @@ public class BoardPage {
         this.key = key;
         this.token = token;
         RestAssured.baseURI = baseUrl;
+
+        // SSL sertifika doğrulamasını kapat (test ortamı için)
+        SSLUtil.disableSSLValidation();
     }
 
     // Yeni board oluşturma
@@ -43,5 +48,4 @@ public class BoardPage {
                 .extract()
                 .response();
     }
-
 }
