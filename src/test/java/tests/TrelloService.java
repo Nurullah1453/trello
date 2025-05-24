@@ -130,7 +130,7 @@ class TrelloService {
     public static void main(String[] args) {
         // Senin key ve token
         String apiKey = "b9c37eb79567ce39658c6006b24cc13f";
-        String token = "ATTA92265029651122737d4ef110df0e3683707139c1c3a715647930054e21d969a551E80F39";
+        String token = "Token";
 
         TrelloService trello = new TrelloService(apiKey, token);
 
