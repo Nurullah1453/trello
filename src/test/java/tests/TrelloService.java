@@ -10,7 +10,7 @@ import java.util.Random;
 
 class TrelloService {
 
-    private final String baseUrl = "https://api.trello.com/1";
+    private final String baseUrl = "";
     private final String apiKey;
     private final String token;
 
