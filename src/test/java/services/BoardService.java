@@ -6,8 +6,8 @@ import kong.unirest.Unirest;
 
 public class BoardService {
     private final String baseUrl = "https://api.trello.com/1";
-    private final String apiKey;
-    private final String token;
+    String apiKey;
+    String token;
 
     public BoardService(String apiKey, String token) {
         this.apiKey = apiKey;
@@ -27,7 +27,7 @@ public class BoardService {
             return boardId;
         } else {
             System.out.println("Failed to create board. Status: " + response.getStatus());
-            System.out.println("Body: " + response.getBody());
+            System.out.println("Response Body: " + response.getBody());
             return null;
         }
     }
