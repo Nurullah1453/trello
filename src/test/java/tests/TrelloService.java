@@ -11,12 +11,16 @@ import java.util.Random;
 class TrelloService {
 
     private final String baseUrl = "https://api.trello.com/1"; // Trello API base URL
-    String apiKey;
-    String token;
+    private String apiKey;
+    private String token;
 
-    public TrelloService(String apiKey, String token) {
-        this.apiKey = apiKey;
-        this.token = token;
+    public TrelloService() {
+        this.apiKey = System.getenv("TRELLO_API_KEY");
+        this.token = System.getenv("TRELLO_TOKEN");
+
+        if (apiKey == null || token == null) {
+            System.err.println("API Key veya Token çevresel değişken olarak ayarlanmamış!");
+        }
     }
 
     // Board oluştur
@@ -128,16 +132,12 @@ class TrelloService {
 
     // MAIN - İşlemleri sırayla yap
     public static void main(String[] args) {
-        // Environment variable’dan API Key ve Token al
-        String apiKey = System.getenv("TRELLO_API_KEY");
-        String token = System.getenv("TRELLO_TOKEN");
+        TrelloService trello = new TrelloService();
 
-        if (apiKey == null || token == null) {
+        if (trello.apiKey == null || trello.token == null) {
             System.out.println("API Key veya Token çevresel değişken olarak ayarlanmamış!");
             return;
         }
-
-        TrelloService trello = new TrelloService(apiKey, token);
 
         // 1. Board oluştur
         String boardId = trello.createBoard("My Test Board");

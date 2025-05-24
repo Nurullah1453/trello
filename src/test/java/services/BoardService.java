@@ -6,12 +6,17 @@ import kong.unirest.Unirest;
 
 public class BoardService {
     private final String baseUrl = "https://api.trello.com/1";
-    String apiKey;
-    String token;
+    private String apiKey;
+    private String token;
 
-    public BoardService(String apiKey, String token) {
-        this.apiKey = apiKey;
-        this.token = token;
+    public BoardService() {
+        // Ortam değişkenlerinden al
+        this.apiKey = System.getenv("ATLASSIAN_API_KEY");
+        this.token = System.getenv("ATLASSIAN_TOKEN");
+
+        if (apiKey == null || token == null) {
+            System.err.println("API Key veya Token ortam değişkenlerinde bulunamadı!");
+        }
     }
 
     public String createBoard(String boardName) {
