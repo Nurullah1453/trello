@@ -1,6 +1,7 @@
 package pages;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utils.SSLUtil;
 
@@ -23,12 +24,13 @@ public class BoardPage {
     }
 
     // Yeni board oluşturma
+
+
     public Response createBoard(String boardName) {
         return given()
-                .relaxedHTTPSValidation()
+                .relaxedHTTPSValidation() // Test ortamı için SSL hatalarını yok sayar
+                .baseUri("https://api.trello.com/1") // Unutma: bu bazen eksik kalıyor
                 .queryParam("name", boardName)
-                .queryParam("defaultLabels", true)       // İsteğe bağlı
-                .queryParam("defaultLists", true)        // İsteğe bağlı
                 .queryParam("key", key)
                 .queryParam("token", token)
                 .when()
@@ -38,6 +40,8 @@ public class BoardPage {
                 .extract()
                 .response();
     }
+
+
 
 
     // Board silme
