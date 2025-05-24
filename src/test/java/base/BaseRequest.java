@@ -8,7 +8,7 @@ public class BaseRequest {
 
     private static final String BASE_URL = "https://api.trello.com/1";
     private static final String API_KEY = "e2f965b99c75e69715539c766a043501";
-    private static final String TOKEN = "Token";
+    private static final String TOKEN = "";
 
     public BaseRequest() {
         request = new RequestSpecBuilder()
